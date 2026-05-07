@@ -1,0 +1,123 @@
+{
+  "hero": {
+    "badge": "MAX VERT: 110CM",
+    "tagline": "THE VERTICAL OUTLIER",
+    "position": "PG",
+    "height": "192CM",
+    "weight": "75KG",
+    "origin": "UZB"
+  },
+  "stats": {
+    "ppg": 20.4,
+    "ast": 7.2,
+    "reb": 9.1,
+    "threePct": 47,
+    "vertical": 110,
+    "height": 192,
+    "wingspan": 198,
+    "sprint": 3.1,
+    "percentile": 99.97
+  },
+  "pioneer": [
+    {
+      "id": "slide-1",
+      "label": "01 / ORIGIN",
+      "title": "TASHKENT,\nUZBEKISTAN.",
+      "copy": "A city of 3 million. One basketball court that mattered. The beginning of a trajectory no algorithm predicted.",
+      "accent": "#CCFF00"
+    },
+    {
+      "id": "slide-2",
+      "label": "02 / RESILIENCE",
+      "title": "THE GRIND\nIS SILENT.",
+      "copy": "The grind isn't aesthetic. It's thousands of hours in empty gyms in Tashkent, refining the mechanics that gravity forgot.",
+      "accent": "#F0F7FF"
+    },
+    {
+      "id": "slide-3",
+      "label": "03 / THE PROTOCOL",
+      "title": "LOGIC\nHAS LIMITS.",
+      "copy": "Logic dictates limits. I choose to ignore them. By documenting every metric, I turn raw potential into scientific certainty.",
+      "accent": "#CCFF00"
+    },
+    {
+      "id": "slide-4",
+      "label": "04 / GLOBAL VISION",
+      "title": "FROM UZB\nTO THE WORLD.",
+      "copy": "From Uzbekistan to the world stage. Re-defining the point guard archetype. The data is verified.",
+      "accent": "#F0F7FF"
+    },
+    {
+      "id": "slide-5",
+      "label": "05 / THE LEGACY",
+      "title": "FIRST.\nNOT LAST.",
+      "copy": "From Tashkent to the NCAA. Redefining the reach of Central Asian basketball. One vertical at a time.",
+      "accent": "#CCFF00"
+    }
+  ],
+  "scoutingReports": [
+    {
+      "id": "SR-001",
+      "classification": "PRIORITY PROSPECT",
+      "agency": "GLOBAL BASKETBALL INTELLIGENCE",
+      "analyst": "SENIOR ANALYST · EURASIA SECTOR",
+      "date": "11.2024",
+      "rating": "9.4",
+      "color": "#CCFF00",
+      "quote": "Ibrohim's vertical displacement defies standard PG archetypes. He is a 1-of-1 athletic anomaly from the Central Asian sector. We have not seen this combination of positional fit and explosive output in 11 years of Eurasian scouting."
+    },
+    {
+      "id": "SR-002",
+      "classification": "ELITE TIER",
+      "agency": "NCAA D1 TALENT ACQUISITION",
+      "analyst": "HEAD SCOUT · INTERNATIONAL DIVISION",
+      "date": "10.2024",
+      "rating": "9.1",
+      "color": "#F0F7FF",
+      "quote": "A 192cm guard with a 110cm vertical is a statistical anomaly. He's not just a player — he's a physical paradigm shift. Explosive burst in the 0–3 step range is unlike anything we've logged from the Central Asian pipeline."
+    },
+    {
+      "id": "SR-003",
+      "classification": "VERIFIED ANOMALY",
+      "agency": "EUROLEAGUE PROSPECT REGISTRY",
+      "analyst": "DATA ANALYST · VERTICAL METRICS",
+      "date": "09.2024",
+      "rating": "9.6",
+      "color": "#CCFF00",
+      "quote": "The Central Asian basketball pipeline has been quiet for decades. Ibrohim is the signal. His vertical output at 192cm places him in the 99.97th percentile globally for guards. This is not a projection — this is a measurement."
+    },
+    {
+      "id": "SR-004",
+      "classification": "WATCH LIST: ACTIVE",
+      "agency": "ELITEPROSPECTS ANALYTICS",
+      "analyst": "LEAD ANALYST · INTERNATIONAL BOARD",
+      "date": "08.2024",
+      "rating": "8.9",
+      "color": "#F0F7FF",
+      "quote": "Positional versatility combined with elite athletic ceiling. Ibrohim plays point guard but occupies space like a wing. The most interesting guard prospect from a non-traditional market in recent memory."
+    }
+  ],
+  "vault": [
+    { "id": "v1", "category": "01 / ORIGIN", "title": "WHERE IT STARTED", "social": "instagram" },
+    { "id": "v2", "category": "02 / THE JUMP", "title": "MAX VERTICAL — 110CM", "social": "tiktok" },
+    { "id": "v3", "category": "03 / GROUND WORK", "title": "TRAINING PROTOCOL", "social": "instagram" },
+    { "id": "v4", "category": "04 / RECRUITMENT REEL", "title": "FULL SEASON CUT 2024", "social": "instagram" },
+    { "id": "v5", "category": "05 / SIGNATURE MOVES", "title": "POINT GUARD MECHANICS", "social": "tiktok" },
+    { "id": "v6", "category": "06 / GAME DAY", "title": "COMPETITION FOOTAGE", "social": "instagram" }
+  ],
+  "shop": [
+    { "id": "hoodie", "name": "THE CEILING", "subtitle": "PREMIUM HOODIE", "price": "$149", "badge": "LIMITED — 50 UNITS", "desc": "Obsidian black heavyweight fleece. Cyber Lime 3D chain-stitch embroidery. Oversized silhouette engineered for athletes who play above the rim. 400GSM warmth for pre-game focus." },
+    { "id": "tee", "name": "VERTICAL PIONEER", "subtitle": "TRAINING TEE", "price": "$79", "badge": "ICE BLUE EDITION", "desc": "Ice Blue performance jersey. Moisture-wicking micro-knit. Brutalist 3D typography printed on 100% recycled performance fibers. Built for the grind, styled for the street." },
+    { "id": "ball", "name": "110CM SIGNATURE", "subtitle": "BASKETBALL", "price": "$199", "badge": "IBROHIM EDITION — 50 UNITS", "desc": "Official size 7. Neon lime seam accents. Custom deep-channel grip. Signed series. The exact ball that trained the vertical that redefined the position. Limited to 50 units." }
+  ],
+  "contact": {
+    "email": "ibrohim.basketball@gmail.com",
+    "instagram": "https://www.instagram.com/ibrohim_basketball/",
+    "tiktok": "https://www.tiktok.com/@ibrohim.2real",
+    "agent": ""
+  },
+  "meta": {
+    "lastUpdated": "",
+    "version": "1.0"
+  }
+}

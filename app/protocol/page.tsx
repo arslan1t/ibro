@@ -259,20 +259,7 @@ export default function ProtocolPage() {
     >
       <div className="noise-overlay" aria-hidden />
 
-      {/* jump-upgrade.png — watermark behind hero text */}
-      <div style={{
-        /* Sunk lower-left — subtle watermark, not foreground */
-        position: 'fixed', bottom: '-8%', right: '2%',
-        transform: 'translate(-100px, 150px)',
-        width: '45vw', maxWidth: '560px',
-        opacity: 0.08, pointerEvents: 'none', zIndex: 0,
-        filter: 'drop-shadow(0 0 30px rgba(204,255,0,0.2))',
-      }}>
-        <Image src="/images/jump-upgrade.png" alt="" width={560} height={700}
-          className="object-contain w-full" />
-      </div>
-
-      {/* Top nav */}
+{/* Top nav */}
       <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4 flex items-center justify-between"
         style={{ background: 'rgba(8,10,12,0.9)', backdropFilter: 'blur(20px)', borderBottom: '1px solid rgba(255,255,255,0.05)' }}
       >
@@ -292,95 +279,202 @@ export default function ProtocolPage() {
       </nav>
 
       {/* Hero */}
-      <section className="relative pt-32 pb-20 px-6 md:px-16 overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none"
-          style={{
-            background: 'radial-gradient(ellipse 60% 40% at 50% 0%, rgba(204,255,0,0.06) 0%, transparent 70%)',
-          }}
-        />
-
-        {/* Grid background */}
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
+      <section className="relative overflow-hidden"
+        style={{ paddingTop: '72px', background: 'radial-gradient(ellipse 60% 50% at 50% 0%, rgba(204,255,0,0.03) 0%, transparent 70%)' }}
+      >
+        {/* Grid bg */}
+        <div className="absolute inset-0 opacity-[0.025] pointer-events-none"
           style={{
             backgroundImage: `linear-gradient(rgba(204,255,0,1) 1px, transparent 1px), linear-gradient(90deg, rgba(204,255,0,1) 1px, transparent 1px)`,
             backgroundSize: '40px 40px',
           }}
         />
 
-        <div className="max-w-4xl mx-auto relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        <div className="relative z-10 px-6 md:px-16 pt-6 pb-2">
+          {/* Top badge row */}
+          <motion.div className="flex items-center gap-4 mb-8"
+            initial={{ opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
           >
-            <div className="flex items-center gap-3 mb-6">
-              <span className="text-body text-[#CCFF00] text-[9px] tracking-[0.6em] uppercase px-3 py-1.5 border border-[#CCFF00]/30 rounded-sm">
-                CLASSIFICATION: ELITE
-              </span>
-              <span className="text-body text-white/25 text-[9px] tracking-widest">
-                EVAP-110 / V.2.4
-              </span>
+            <span style={{
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: '9px', letterSpacing: '0.4em', textTransform: 'uppercase',
+              padding: '5px 14px',
+              background: 'rgba(204,255,0,0.08)', border: '1px solid rgba(204,255,0,0.25)', color: '#CCFF00',
+            }}>
+              CLASSIFICATION: ELITE · EVAP-110
+            </span>
+            <span style={{
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: '8px', letterSpacing: '0.3em', textTransform: 'uppercase',
+              color: 'rgba(255,255,255,0.22)',
+            }}>
+              V.2.4 / 8 WEEKS
+            </span>
+          </motion.div>
+        </div>
+
+        {/* Two-column hero */}
+        <motion.div
+          className="flex flex-col md:grid"
+          style={{
+            gridTemplateColumns: '1fr 1fr',
+            border: '1px solid rgba(204,255,0,0.08)',
+            marginLeft: 'clamp(16px, 4vw, 64px)',
+            marginRight: 'clamp(16px, 4vw, 64px)',
+          }}
+          initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        >
+          {/* LEFT — text */}
+          <div style={{
+            display: 'flex', flexDirection: 'column', justifyContent: 'center',
+            padding: 'clamp(24px, 5vw, 56px) clamp(16px, 6%, 48px)',
+            borderBottom: '1px solid rgba(204,255,0,0.08)',
+          }}
+            className="md:border-b-0 md:border-r md:border-[rgba(204,255,0,0.08)]"
+          >
+            <div style={{
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: '7.5px', letterSpacing: '0.45em', textTransform: 'uppercase',
+              color: '#CCFF00', marginBottom: '16px',
+            }}>
+              SECTION_07 // THE 110CM PROTOCOL
             </div>
 
-            <h1
-              style={{
-                fontFamily: "'Bebas Neue', cursive",
-                fontSize: 'clamp(52px, 10vw, 130px)',
-                lineHeight: 0.88,
-                color: '#F0F7FF',
-              }}
-            >
-              ELITE VERTICAL<br />
-              <span style={{ color: '#CCFF00', textShadow: '0 0 40px rgba(204,255,0,0.3)' }}>
-                & AGILITY
+            <h1 style={{
+              fontFamily: "'Bebas Neue', cursive",
+              fontSize: 'clamp(42px, 9vw, 100px)',
+              lineHeight: 0.88, letterSpacing: '0.03em',
+              color: '#F0F7FF', marginBottom: '16px',
+            }}>
+              ELITE<br />
+              <span style={{ color: '#CCFF00', textShadow: '0 0 28px rgba(204,255,0,0.35)' }}>
+                VERTICAL
               </span><br />
               PROTOCOL
             </h1>
 
-            <p className="text-body text-white/50 text-base md:text-lg leading-relaxed mt-8 max-w-xl">
-              The exact system behind a 110cm vertical. Engineered for athletes
-              who refuse positional ceilings. This is not a workout — it's a physics problem solved.
+            <div style={{ width: '40px', height: '1px', background: '#CCFF00', boxShadow: '0 0 8px #CCFF00', marginBottom: '16px' }} />
+
+            <p style={{
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontSize: 'clamp(13px, 2vw, 15px)', lineHeight: 1.65,
+              color: 'rgba(255,255,255,0.50)', marginBottom: '20px',
+            }}>
+              The exact system behind a 110cm vertical. 10 exercises,
+              3 phases, 8 weeks. This is not a workout — it's a physics problem solved.
             </p>
-          </motion.div>
 
-          {/* Stat bar */}
-          <motion.div
-            className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-          >
-            {[
-              { v: '10', u: 'EXERCISES' },
-              { v: '3',  u: 'PHASES' },
-              { v: '8',  u: 'WEEKS' },
-              { v: '110', u: 'CM TARGET' },
-            ].map((s) => (
-              <div key={s.u} className="glass-card p-4 text-center">
-                <div style={{ fontFamily: "'Bebas Neue', cursive", color: '#CCFF00', fontSize: '36px' }}>{s.v}</div>
-                <div className="text-body text-white/30 text-[9px] tracking-[0.4em] uppercase mt-1">{s.u}</div>
-              </div>
-            ))}
-          </motion.div>
+            {/* Inline stats */}
+            <div style={{ display: 'flex', gap: '24px', marginBottom: '20px', flexWrap: 'wrap' }}>
+              {[{ v: '10', u: 'EXERCISES' }, { v: '3', u: 'PHASES' }, { v: '8W', u: 'PROGRAM' }, { v: '110', u: 'CM TARGET' }].map(s => (
+                <div key={s.u}>
+                  <div style={{ fontFamily: "'Bebas Neue', cursive", fontSize: '28px', color: '#CCFF00', lineHeight: 1 }}>{s.v}</div>
+                  <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '7px', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.3em' }}>{s.u}</div>
+                </div>
+              ))}
+            </div>
 
-          {/* Phase legend */}
-          <div className="flex flex-wrap gap-3 mt-8">
-            {PHASES.map((p) => (
-              <div key={p.tag} className="flex items-center gap-2 px-4 py-2 rounded-sm"
-                style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.07)' }}
-              >
-                <span className="text-[#CCFF00] opacity-70">{p.icon}</span>
-                <span className="text-body text-white/50 text-[10px] tracking-[0.3em] uppercase">
-                  {p.tag} — {p.label}
-                </span>
-              </div>
-            ))}
+            <div style={{
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: '7px', letterSpacing: '0.38em', textTransform: 'uppercase',
+              color: 'rgba(204,255,0,0.35)', marginBottom: '20px',
+            }}>
+              TASHKENT ORIGIN / VERIFIED PROTOCOL / GLOBAL ATHLETES
+            </div>
+
+            <a href="#program" style={{
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: '9px', letterSpacing: '0.5em', textTransform: 'uppercase',
+              color: '#CCFF00', textDecoration: 'none',
+              display: 'inline-flex', alignItems: 'center', gap: '8px',
+              transition: 'opacity 0.2s',
+            }}
+              onMouseEnter={e => (e.currentTarget.style.opacity = '0.65')}
+              onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
+            >
+              VIEW PROGRAM
+              <span style={{ display: 'inline-block', width: '20px', height: '1px', background: '#CCFF00', verticalAlign: 'middle' }} />
+            </a>
           </div>
-        </div>
+
+          {/* RIGHT — training video viewfinder */}
+          <div style={{ position: 'relative', overflow: 'hidden', minHeight: 'clamp(260px, 50vw, 520px)' }}>
+            <video
+              src="/footage/training-raw.mp4"
+              autoPlay muted loop playsInline
+              style={{
+                position: 'absolute', inset: 0, width: '100%', height: '100%',
+                objectFit: 'cover',
+                filter: 'saturate(0.2) contrast(1.35) brightness(0.65)',
+              }}
+            />
+            {/* Scanlines */}
+            <div style={{
+              position: 'absolute', inset: 0, pointerEvents: 'none',
+              backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.20) 3px, rgba(0,0,0,0.20) 4px)',
+            }} />
+            {/* Lime tint */}
+            <div style={{
+              position: 'absolute', inset: 0, pointerEvents: 'none',
+              background: 'linear-gradient(135deg, rgba(204,255,0,0.04) 0%, transparent 50%)',
+            }} />
+            {/* Viewfinder corners */}
+            {(['TL','TR','BL','BR'] as const).map(c => {
+              const t = c.startsWith('T'), l = c.endsWith('L')
+              return (
+                <div key={c} style={{
+                  position: 'absolute',
+                  ...(t ? { top: '18px' } : { bottom: '18px' }),
+                  ...(l ? { left: '18px' } : { right: '18px' }),
+                  width: '16px', height: '16px',
+                  borderColor: 'rgba(204,255,0,0.7)', borderStyle: 'solid', borderWidth: 0,
+                  ...(t ? { borderTopWidth: '1.5px' } : { borderBottomWidth: '1.5px' }),
+                  ...(l ? { borderLeftWidth: '1.5px' } : { borderRightWidth: '1.5px' }),
+                }} />
+              )
+            })}
+            {/* HUD bottom-left */}
+            <div style={{
+              position: 'absolute', bottom: '22px', left: '22px',
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: '7px', letterSpacing: '0.35em', textTransform: 'uppercase',
+              color: 'rgba(204,255,0,0.55)',
+              background: 'rgba(4,6,10,0.7)', padding: '3px 8px',
+              backdropFilter: 'blur(4px)',
+            }}>
+              [TRAINING / EVAP-110_PROTOCOL]
+            </div>
+            {/* Live dot top-right */}
+            <div style={{ position: 'absolute', top: '22px', right: '22px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <div style={{
+                width: '5px', height: '5px', borderRadius: '50%',
+                background: '#CCFF00', boxShadow: '0 0 8px #CCFF00',
+                animation: 'pulse-lime 2s ease-out infinite',
+              }} />
+              <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '6.5px', letterSpacing: '0.3em', color: 'rgba(204,255,0,0.5)' }}>
+                LIVE
+              </span>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Ticker */}
+        <motion.div
+          className="flex items-center gap-8 px-6 md:px-16 mt-6 mb-8 overflow-hidden"
+          initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}
+        >
+          {['10 EXERCISES', '3 PHASES', '8 WEEKS', 'VERIFIED PROTOCOL', '110CM TARGET'].map(t => (
+            <span key={t} className="flex items-center gap-2 text-body text-white/20 text-[9px] tracking-[0.4em] uppercase whitespace-nowrap">
+              <span className="w-1 h-1 rounded-full bg-[#CCFF00]" />
+              {t}
+            </span>
+          ))}
+        </motion.div>
       </section>
 
       {/* ── FREE exercises ── */}
-      <section className="px-6 md:px-16 pb-12">
+      <section id="program" className="px-6 md:px-16 pb-12">
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center gap-3 mb-8">
             <Unlock size={14} className="text-[#CCFF00]" />

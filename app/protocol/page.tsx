@@ -321,7 +321,7 @@ export default function ProtocolPage() {
               gridTemplateColumns: '1fr 1fr',
               gap: '0',
               border: '1px solid rgba(204,255,0,0.08)',
-              minHeight: 'clamp(280px, 55vw, 480px)',
+              alignItems: 'stretch',
             }}
             initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
@@ -399,7 +399,7 @@ export default function ProtocolPage() {
             </div>
 
             {/* RIGHT — protocol video viewfinder */}
-            <div style={{ position: 'relative', overflow: 'hidden', minHeight: 'clamp(240px, 50vw, 480px)' }}>
+            <div style={{ position: 'relative', overflow: 'hidden', aspectRatio: '1 / 1' }}>
               <video
                 src="/footage/protocol.mov"
                 autoPlay muted loop playsInline

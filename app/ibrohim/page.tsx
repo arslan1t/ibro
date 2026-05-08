@@ -1681,7 +1681,7 @@ const VAULT_REELS: VaultCardProps[] = [
     category: '01 / ORIGIN',
     title: 'WHERE IT STARTED',
     duration: '—',
-    src: '/footage/recruitment-reel.mp4',
+    src: '/footage/vault-01.mp4',
     gradient: 'linear-gradient(135deg, #0C0A02 0%, #1A1408 50%, #080602 100%)',
     social: {
       platform: 'instagram',
@@ -1695,7 +1695,7 @@ const VAULT_REELS: VaultCardProps[] = [
     category: '02 / THE JUMP',
     title: 'MAX VERTICAL — 110CM',
     duration: '—',
-    src: '/footage/jump-main.mp4',
+    src: '/footage/vault-02.mp4',
     gradient: 'linear-gradient(135deg, #02100C 0%, #041A10 50%, #021208 100%)',
     social: {
       platform: 'tiktok',
@@ -1709,7 +1709,7 @@ const VAULT_REELS: VaultCardProps[] = [
     category: '03 / GROUND WORK',
     title: 'TRAINING PROTOCOL',
     duration: '—',
-    src: '/footage/training-raw.mp4',
+    src: '/footage/vault-03.mp4',
     gradient: 'linear-gradient(135deg, #100210 0%, #1A0420 50%, #0E0218 100%)',
     social: {
       platform: 'instagram',
@@ -1723,7 +1723,7 @@ const VAULT_REELS: VaultCardProps[] = [
     category: '04 / RECRUITMENT REEL',
     title: 'FULL SEASON CUT 2024',
     duration: '—',
-    src: '/footage/recruitment-reel.mp4',
+    src: '/footage/vault-04.mp4',
     gradient: 'linear-gradient(135deg, #0A1628 0%, #0F2040 50%, #061020 100%)',
     social: {
       platform: 'instagram',
@@ -1737,7 +1737,7 @@ const VAULT_REELS: VaultCardProps[] = [
     category: '05 / SIGNATURE MOVES',
     title: 'POINT GUARD MECHANICS',
     duration: '—',
-    src: '/footage/jump-main.mp4',
+    src: '/footage/vault-05.mp4',
     gradient: 'linear-gradient(135deg, #180808 0%, #280C0C 50%, #140606 100%)',
     social: {
       platform: 'tiktok',
@@ -1751,7 +1751,7 @@ const VAULT_REELS: VaultCardProps[] = [
     category: '06 / GAME DAY',
     title: 'COMPETITION FOOTAGE',
     duration: '—',
-    src: '/footage/training-raw.mp4',
+    src: '/footage/vault-06.mp4',
     gradient: 'linear-gradient(135deg, #080A1A 0%, #0C1030 50%, #060818 100%)',
     social: {
       platform: 'instagram',

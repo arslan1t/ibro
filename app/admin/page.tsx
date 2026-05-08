@@ -25,27 +25,46 @@ interface Order {
 
 /* ─── Image slot definitions ─────────────────────────────────────── */
 const IMAGE_SLOTS = [
-  { slot: 'ibro',     label: 'MAIN PHOTO',        desc: 'Section 02 — статистика (PNG с прозрачным фоном)',     preview: '/images/ibro.png' },
-  { slot: 'jump',     label: 'JUMP PHOTO',         desc: 'Section 03 — фото прыжка',                             preview: '/images/jump.png' },
-  { slot: 'location', label: 'PIONEER SLIDE 1',    desc: 'Section 04 — Ташкент / Origin',                        preview: '/images/location.png' },
-  { slot: 'arm',      label: 'PIONEER SLIDE 2',    desc: 'Section 04 — Resilience',                              preview: '/images/arm.png' },
-  { slot: 'leg',      label: 'PIONEER SLIDE 3',    desc: 'Section 04 — The Protocol',                            preview: '/images/leg.png' },
-  { slot: 'univers',  label: 'PIONEER SLIDE 5',    desc: 'Section 04 — Global Vision / World',                   preview: '/images/univers.png' },
+  /* Site identity */
   { slot: 'logo-new', label: 'LOGO',               desc: 'Логотип навигации',                                    preview: '/images/logo-new.png' },
+  /* Section 02 */
+  { slot: 'ibro',     label: 'S02 — MAIN PHOTO',   desc: 'Section 02 — статистика (PNG с прозрачным фоном)',     preview: '/images/ibro.png' },
+  /* Section 03 */
+  { slot: 'jump',     label: 'S03 — JUMP PHOTO',   desc: 'Section 03 — фото прыжка (фон)',                       preview: '/images/jump.png' },
+  /* Section 04 Pioneer */
+  { slot: 'location', label: 'S04 — PIONEER 1',    desc: 'Pioneer — Slide 1: TASHKENT / ORIGIN',                 preview: '/images/location.png' },
+  { slot: 'arm',      label: 'S04 — PIONEER 2',    desc: 'Pioneer — Slide 2: RESILIENCE',                        preview: '/images/arm.png' },
+  { slot: 'leg',      label: 'S04 — PIONEER 3',    desc: 'Pioneer — Slide 3: THE PROTOCOL',                      preview: '/images/leg.png' },
+  { slot: 'univers',  label: 'S04 — PIONEER 5',    desc: 'Pioneer — Slide 5: GLOBAL VISION',                     preview: '/images/univers.png' },
+  /* Section 05 Archive */
+  { slot: 'ref-1',    label: 'S05 — ARCHIVE 1',    desc: 'Archive — фото 1 (Tashkent Origin)',                   preview: '/images/ref-1.png' },
+  { slot: 'ref-2',    label: 'S05 — ARCHIVE 2',    desc: 'Archive — фото 2 (Training Session)',                  preview: '/images/ref-2.png' },
+  { slot: 'ref-3',    label: 'S05 — ARCHIVE 3',    desc: 'Archive — фото 3 (Court Vision)',                      preview: '/images/ref-3.png' },
+  { slot: 'ref-4',    label: 'S05 — ARCHIVE 4',    desc: 'Archive — фото 4',                                     preview: '/images/ref-4.png' },
+  { slot: 'ref-5',    label: 'S05 — ARCHIVE 5',    desc: 'Archive — фото 5',                                     preview: '/images/ref-5.png' },
 ]
 
 /* ─── Video slot definitions ─────────────────────────────────────── */
 const VIDEO_SLOTS = [
-  { slot: 'model',           label: 'HERO MODEL',          desc: 'Shop — главное видео (левая колонка)', ext: 'mov' },
-  { slot: 'hoodie',          label: 'HOODIE',              desc: 'Shop — THE CEILING hoodie',           ext: 'mov' },
-  { slot: 'tee',             label: 'TEE',                 desc: 'Shop — VERTICAL PIONEER tee',         ext: 'mov' },
-  { slot: 'ball',            label: 'BASKETBALL',          desc: 'Shop — 110CM SIGNATURE ball',         ext: 'mov' },
-  { slot: 'jersey',          label: 'JERSEY',              desc: 'Shop — PIONEER JERSEY',               ext: 'mov' },
-  { slot: 'shoe',            label: 'SHOES',               desc: 'Shop — VERTICAL BOOST shoes',         ext: 'mov' },
-  { slot: 'shorts',          label: 'SHORTS',              desc: 'Shop — APEX SHORTS',                  ext: 'mov' },
-  { slot: 'jump-main',       label: 'JUMP VIDEO',          desc: 'Section 03 — левое видео (прыжок)',   ext: 'mp4' },
-  { slot: 'recruitment-reel',label: 'RECRUITMENT REEL',    desc: 'Section 03 — правое видео (игра)',    ext: 'mp4' },
-  { slot: 'training-raw',    label: 'TRAINING VIDEO',      desc: 'Section 03 — тренировки',             ext: 'mp4' },
+  /* Section 03 */
+  { slot: 'jump-main',        label: 'S03 — JUMP VIDEO',         desc: 'Section 03 — левое видео (прыжок)',              ext: 'mp4', group: 'SECTION 03' },
+  { slot: 'recruitment-reel', label: 'S03 — RECRUITMENT REEL',   desc: 'Section 03 — правое видео (игра)',               ext: 'mp4', group: 'SECTION 03' },
+  { slot: 'training-raw',     label: 'S03 — TRAINING VIDEO',     desc: 'Section 03 — тренировки',                        ext: 'mp4', group: 'SECTION 03' },
+  /* Vault / Section 06 */
+  { slot: 'vault-01',         label: 'VAULT 01 — ORIGIN',        desc: 'Vault — WHERE IT STARTED',                       ext: 'mp4', group: 'THE VAULT' },
+  { slot: 'vault-02',         label: 'VAULT 02 — THE JUMP',      desc: 'Vault — MAX VERTICAL 110CM',                     ext: 'mp4', group: 'THE VAULT' },
+  { slot: 'vault-03',         label: 'VAULT 03 — GROUND WORK',   desc: 'Vault — TRAINING PROTOCOL',                      ext: 'mp4', group: 'THE VAULT' },
+  { slot: 'vault-04',         label: 'VAULT 04 — REEL',          desc: 'Vault — FULL SEASON CUT 2024',                   ext: 'mp4', group: 'THE VAULT' },
+  { slot: 'vault-05',         label: 'VAULT 05 — SIGNATURE',     desc: 'Vault — POINT GUARD MECHANICS',                  ext: 'mp4', group: 'THE VAULT' },
+  { slot: 'vault-06',         label: 'VAULT 06 — GAME DAY',      desc: 'Vault — COMPETITION FOOTAGE',                    ext: 'mp4', group: 'THE VAULT' },
+  /* Shop */
+  { slot: 'model',            label: 'SHOP — HERO MODEL',        desc: 'Shop — главное видео героя',                     ext: 'mov', group: 'SHOP' },
+  { slot: 'hoodie',           label: 'SHOP — HOODIE',            desc: 'Shop — THE CEILING hoodie',                      ext: 'mov', group: 'SHOP' },
+  { slot: 'tee',              label: 'SHOP — TEE',               desc: 'Shop — VERTICAL PIONEER tee',                    ext: 'mov', group: 'SHOP' },
+  { slot: 'ball',             label: 'SHOP — BASKETBALL',        desc: 'Shop — 110CM SIGNATURE ball',                    ext: 'mov', group: 'SHOP' },
+  { slot: 'jersey',           label: 'SHOP — JERSEY',            desc: 'Shop — PIONEER JERSEY',                          ext: 'mov', group: 'SHOP' },
+  { slot: 'shoe',             label: 'SHOP — SHOES',             desc: 'Shop — VERTICAL BOOST shoes',                    ext: 'mov', group: 'SHOP' },
+  { slot: 'shorts',           label: 'SHOP — SHORTS',            desc: 'Shop — APEX SHORTS',                             ext: 'mov', group: 'SHOP' },
 ]
 
 /* ─── Helpers ────────────────────────────────────────────────────── */
@@ -651,8 +670,13 @@ export default function AdminPage() {
               MP4 / MOV — ЗАМЕНЯЕТ ТЕКУЩЕЕ ВИДЕО СРАЗУ
             </p>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '20px' }}>
-              {VIDEO_SLOTS.map(({ slot, label, desc, ext }) => {
+            {(['SECTION 03', 'THE VAULT', 'SHOP'] as const).map(group => (
+              <div key={group} style={{ marginBottom: '32px' }}>
+                <div style={{ ...mono, fontSize: '7px', color: 'rgba(204,255,0,0.4)', letterSpacing: '0.5em', marginBottom: '16px', borderBottom: '1px solid rgba(204,255,0,0.1)', paddingBottom: '8px' }}>
+                  {group}
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '16px' }}>
+                  {VIDEO_SLOTS.filter(s => s.group === group).map(({ slot, label, desc, ext }) => {
                 const uploading = vidUploading[slot]
                 const done      = vidDone[slot]
                 const uploaded  = vidNames[slot]
@@ -739,17 +763,19 @@ export default function AdminPage() {
                   </div>
                 )
               })}
-            </div>
+                </div>
+              </div>
+            ))}
 
             <div style={{
-              marginTop: '28px', padding: '16px 20px',
+              marginTop: '16px', padding: '16px 20px',
               border: '1px solid rgba(255,255,255,0.06)',
               background: 'rgba(255,255,255,0.01)',
             }}>
               <div style={{ ...mono, fontSize: '7px', color: 'rgba(255,255,255,0.2)', letterSpacing: '0.25em', lineHeight: 1.8 }}>
-                ◈ MOV — для видео магазина (shop products)<br/>
-                ◈ MP4 — для контент-видео (Section 03, recruitment reel)<br/>
-                ◈ Рекомендуемый размер: до 50MB, разрешение 1080p<br/>
+                ◈ MP4 — Section 03, Vault карточки<br/>
+                ◈ MOV — видео товаров в магазине<br/>
+                ◈ Рекомендуемый размер: до 80MB, разрешение 1080p<br/>
                 ◈ Файл перезаписывается сразу — обнови страницу сайта чтобы увидеть изменения
               </div>
             </div>

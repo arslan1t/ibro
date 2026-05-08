@@ -278,9 +278,10 @@ export default function ProtocolPage() {
         </div>
       </nav>
 
-      {/* Hero */}
-      <section className="relative overflow-hidden"
-        style={{ paddingTop: '72px', background: 'radial-gradient(ellipse 60% 50% at 50% 0%, rgba(204,255,0,0.03) 0%, transparent 70%)' }}
+      {/* Hero — same structure as Shop page */}
+      <section className="relative px-6 md:px-16 overflow-hidden"
+        style={{ paddingTop: '88px', paddingBottom: '48px',
+          background: 'radial-gradient(ellipse 60% 50% at 50% 0%, rgba(204,255,0,0.03) 0%, transparent 70%)' }}
       >
         {/* Grid bg */}
         <div className="absolute inset-0 opacity-[0.025] pointer-events-none"
@@ -290,9 +291,10 @@ export default function ProtocolPage() {
           }}
         />
 
-        <div className="relative z-10 px-6 md:px-16 pt-6 pb-2">
-          {/* Top badge row */}
-          <motion.div className="flex items-center gap-4 mb-8"
+        <div className="max-w-6xl mx-auto">
+
+          {/* Badge row */}
+          <motion.div className="flex items-center gap-4 mb-10"
             initial={{ opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
           >
             <span style={{
@@ -311,166 +313,159 @@ export default function ProtocolPage() {
               V.2.4 / 8 WEEKS
             </span>
           </motion.div>
-        </div>
 
-        {/* Two-column hero */}
-        <motion.div
-          className="flex flex-col md:grid"
-          style={{
-            gridTemplateColumns: '1fr 1fr',
-            border: '1px solid rgba(204,255,0,0.08)',
-            marginLeft: 'clamp(16px, 4vw, 64px)',
-            marginRight: 'clamp(16px, 4vw, 64px)',
-          }}
-          initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        >
-          {/* LEFT — text */}
-          <div style={{
-            display: 'flex', flexDirection: 'column', justifyContent: 'center',
-            padding: 'clamp(24px, 5vw, 56px) clamp(16px, 6%, 48px)',
-            borderBottom: '1px solid rgba(204,255,0,0.08)',
-          }}
-            className="md:border-b-0 md:border-r md:border-[rgba(204,255,0,0.08)]"
-          >
-            <div style={{
-              fontFamily: "'JetBrains Mono', monospace",
-              fontSize: '7.5px', letterSpacing: '0.45em', textTransform: 'uppercase',
-              color: '#CCFF00', marginBottom: '16px',
-            }}>
-              SECTION_07 // THE 110CM PROTOCOL
-            </div>
-
-            <h1 style={{
-              fontFamily: "'Bebas Neue', cursive",
-              fontSize: 'clamp(42px, 9vw, 100px)',
-              lineHeight: 0.88, letterSpacing: '0.03em',
-              color: '#F0F7FF', marginBottom: '16px',
-            }}>
-              ELITE<br />
-              <span style={{ color: '#CCFF00', textShadow: '0 0 28px rgba(204,255,0,0.35)' }}>
-                VERTICAL
-              </span><br />
-              PROTOCOL
-            </h1>
-
-            <div style={{ width: '40px', height: '1px', background: '#CCFF00', boxShadow: '0 0 8px #CCFF00', marginBottom: '16px' }} />
-
-            <p style={{
-              fontFamily: "'Space Grotesk', sans-serif",
-              fontSize: 'clamp(13px, 2vw, 15px)', lineHeight: 1.65,
-              color: 'rgba(255,255,255,0.50)', marginBottom: '20px',
-            }}>
-              The exact system behind a 110cm vertical. 10 exercises,
-              3 phases, 8 weeks. This is not a workout — it's a physics problem solved.
-            </p>
-
-            {/* Inline stats */}
-            <div style={{ display: 'flex', gap: '24px', marginBottom: '20px', flexWrap: 'wrap' }}>
-              {[{ v: '10', u: 'EXERCISES' }, { v: '3', u: 'PHASES' }, { v: '8W', u: 'PROGRAM' }, { v: '110', u: 'CM TARGET' }].map(s => (
-                <div key={s.u}>
-                  <div style={{ fontFamily: "'Bebas Neue', cursive", fontSize: '28px', color: '#CCFF00', lineHeight: 1 }}>{s.v}</div>
-                  <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '7px', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.3em' }}>{s.u}</div>
-                </div>
-              ))}
-            </div>
-
-            <div style={{
-              fontFamily: "'JetBrains Mono', monospace",
-              fontSize: '7px', letterSpacing: '0.38em', textTransform: 'uppercase',
-              color: 'rgba(204,255,0,0.35)', marginBottom: '20px',
-            }}>
-              TASHKENT ORIGIN / VERIFIED PROTOCOL / GLOBAL ATHLETES
-            </div>
-
-            <a href="#program" style={{
-              fontFamily: "'JetBrains Mono', monospace",
-              fontSize: '9px', letterSpacing: '0.5em', textTransform: 'uppercase',
-              color: '#CCFF00', textDecoration: 'none',
-              display: 'inline-flex', alignItems: 'center', gap: '8px',
-              transition: 'opacity 0.2s',
+          {/* Two-column grid */}
+          <motion.div
+            className="flex flex-col md:grid"
+            style={{
+              gridTemplateColumns: '1fr 1fr',
+              gap: '0',
+              border: '1px solid rgba(204,255,0,0.08)',
+              minHeight: 'clamp(280px, 55vw, 480px)',
             }}
-              onMouseEnter={e => (e.currentTarget.style.opacity = '0.65')}
-              onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
+            initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          >
+            {/* LEFT — text */}
+            <div style={{
+              display: 'flex', flexDirection: 'column', justifyContent: 'center',
+              padding: 'clamp(24px, 5vw, 48px) clamp(16px, 6%, 40px)',
+              borderBottom: '1px solid rgba(204,255,0,0.08)',
+            }}
+              className="md:border-b-0 md:border-r md:border-[rgba(204,255,0,0.08)]"
             >
-              VIEW PROGRAM
-              <span style={{ display: 'inline-block', width: '20px', height: '1px', background: '#CCFF00', verticalAlign: 'middle' }} />
-            </a>
-          </div>
-
-          {/* RIGHT — training video viewfinder */}
-          <div style={{ position: 'relative', overflow: 'hidden', minHeight: 'clamp(260px, 50vw, 520px)' }}>
-            <video
-              src="/footage/training-raw.mp4"
-              autoPlay muted loop playsInline
-              style={{
-                position: 'absolute', inset: 0, width: '100%', height: '100%',
-                objectFit: 'cover',
-                filter: 'saturate(0.2) contrast(1.35) brightness(0.65)',
-              }}
-            />
-            {/* Scanlines */}
-            <div style={{
-              position: 'absolute', inset: 0, pointerEvents: 'none',
-              backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.20) 3px, rgba(0,0,0,0.20) 4px)',
-            }} />
-            {/* Lime tint */}
-            <div style={{
-              position: 'absolute', inset: 0, pointerEvents: 'none',
-              background: 'linear-gradient(135deg, rgba(204,255,0,0.04) 0%, transparent 50%)',
-            }} />
-            {/* Viewfinder corners */}
-            {(['TL','TR','BL','BR'] as const).map(c => {
-              const t = c.startsWith('T'), l = c.endsWith('L')
-              return (
-                <div key={c} style={{
-                  position: 'absolute',
-                  ...(t ? { top: '18px' } : { bottom: '18px' }),
-                  ...(l ? { left: '18px' } : { right: '18px' }),
-                  width: '16px', height: '16px',
-                  borderColor: 'rgba(204,255,0,0.7)', borderStyle: 'solid', borderWidth: 0,
-                  ...(t ? { borderTopWidth: '1.5px' } : { borderBottomWidth: '1.5px' }),
-                  ...(l ? { borderLeftWidth: '1.5px' } : { borderRightWidth: '1.5px' }),
-                }} />
-              )
-            })}
-            {/* HUD bottom-left */}
-            <div style={{
-              position: 'absolute', bottom: '22px', left: '22px',
-              fontFamily: "'JetBrains Mono', monospace",
-              fontSize: '7px', letterSpacing: '0.35em', textTransform: 'uppercase',
-              color: 'rgba(204,255,0,0.55)',
-              background: 'rgba(4,6,10,0.7)', padding: '3px 8px',
-              backdropFilter: 'blur(4px)',
-            }}>
-              [TRAINING / EVAP-110_PROTOCOL]
-            </div>
-            {/* Live dot top-right */}
-            <div style={{ position: 'absolute', top: '22px', right: '22px', display: 'flex', alignItems: 'center', gap: '6px' }}>
               <div style={{
-                width: '5px', height: '5px', borderRadius: '50%',
-                background: '#CCFF00', boxShadow: '0 0 8px #CCFF00',
-                animation: 'pulse-lime 2s ease-out infinite',
-              }} />
-              <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '6.5px', letterSpacing: '0.3em', color: 'rgba(204,255,0,0.5)' }}>
-                LIVE
-              </span>
-            </div>
-          </div>
-        </motion.div>
+                fontFamily: "'JetBrains Mono', monospace",
+                fontSize: '7.5px', letterSpacing: '0.45em', textTransform: 'uppercase',
+                color: '#CCFF00', marginBottom: '16px',
+              }}>
+                SECTION_07 // THE 110CM PROTOCOL
+              </div>
 
-        {/* Ticker */}
-        <motion.div
-          className="flex items-center gap-8 px-6 md:px-16 mt-6 mb-8 overflow-hidden"
-          initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}
-        >
-          {['10 EXERCISES', '3 PHASES', '8 WEEKS', 'VERIFIED PROTOCOL', '110CM TARGET'].map(t => (
-            <span key={t} className="flex items-center gap-2 text-body text-white/20 text-[9px] tracking-[0.4em] uppercase whitespace-nowrap">
-              <span className="w-1 h-1 rounded-full bg-[#CCFF00]" />
-              {t}
-            </span>
-          ))}
-        </motion.div>
+              <h1 style={{
+                fontFamily: "'Bebas Neue', cursive",
+                fontSize: 'clamp(42px, 7vw, 88px)',
+                lineHeight: 0.88, letterSpacing: '0.03em',
+                color: '#F0F7FF', marginBottom: '16px',
+              }}>
+                ELITE<br />
+                <span style={{ color: '#CCFF00', textShadow: '0 0 28px rgba(204,255,0,0.35)' }}>
+                  VERTICAL
+                </span><br />
+                PROTOCOL
+              </h1>
+
+              <div style={{ width: '40px', height: '1px', background: '#CCFF00', boxShadow: '0 0 8px #CCFF00', marginBottom: '16px' }} />
+
+              <p style={{
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontSize: 'clamp(13px, 2vw, 15px)', lineHeight: 1.65,
+                color: 'rgba(255,255,255,0.50)', marginBottom: '16px',
+              }}>
+                The exact system behind a 110cm vertical. 10 exercises,
+                3 phases, 8 weeks. This is not a workout — it's a physics problem solved.
+              </p>
+
+              <div style={{ display: 'flex', gap: '20px', marginBottom: '16px', flexWrap: 'wrap' }}>
+                {[{ v: '10', u: 'EXERCISES' }, { v: '3', u: 'PHASES' }, { v: '8W', u: 'PROGRAM' }, { v: '110', u: 'CM TARGET' }].map(s => (
+                  <div key={s.u}>
+                    <div style={{ fontFamily: "'Bebas Neue', cursive", fontSize: '26px', color: '#CCFF00', lineHeight: 1 }}>{s.v}</div>
+                    <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '7px', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.3em' }}>{s.u}</div>
+                  </div>
+                ))}
+              </div>
+
+              <div style={{
+                fontFamily: "'JetBrains Mono', monospace",
+                fontSize: '7px', letterSpacing: '0.38em', textTransform: 'uppercase',
+                color: 'rgba(204,255,0,0.35)', marginBottom: '20px',
+              }}>
+                TASHKENT ORIGIN / VERIFIED PROTOCOL / GLOBAL ATHLETES
+              </div>
+
+              <a href="#program" style={{
+                fontFamily: "'JetBrains Mono', monospace",
+                fontSize: '9px', letterSpacing: '0.5em', textTransform: 'uppercase',
+                color: '#CCFF00', textDecoration: 'none',
+                display: 'inline-flex', alignItems: 'center', gap: '8px',
+                transition: 'opacity 0.2s',
+              }}
+                onMouseEnter={e => (e.currentTarget.style.opacity = '0.65')}
+                onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
+              >
+                VIEW PROGRAM
+                <span style={{ display: 'inline-block', width: '20px', height: '1px', background: '#CCFF00', verticalAlign: 'middle' }} />
+              </a>
+            </div>
+
+            {/* RIGHT — protocol video viewfinder */}
+            <div style={{ position: 'relative', overflow: 'hidden', minHeight: 'clamp(240px, 50vw, 480px)' }}>
+              <video
+                src="/footage/protocol.mov"
+                autoPlay muted loop playsInline
+                style={{
+                  position: 'absolute', inset: 0, width: '100%', height: '100%',
+                  objectFit: 'cover',
+                  filter: 'saturate(0.25) contrast(1.3) brightness(0.72)',
+                }}
+              />
+              <div style={{
+                position: 'absolute', inset: 0, pointerEvents: 'none',
+                backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.20) 3px, rgba(0,0,0,0.20) 4px)',
+              }} />
+              <div style={{
+                position: 'absolute', inset: 0, pointerEvents: 'none',
+                background: 'linear-gradient(135deg, rgba(204,255,0,0.04) 0%, transparent 50%)',
+              }} />
+              {(['TL','TR','BL','BR'] as const).map(c => {
+                const t = c.startsWith('T'), l = c.endsWith('L')
+                return (
+                  <div key={c} style={{
+                    position: 'absolute',
+                    ...(t ? { top: '18px' } : { bottom: '18px' }),
+                    ...(l ? { left: '18px' } : { right: '18px' }),
+                    width: '16px', height: '16px',
+                    borderColor: 'rgba(204,255,0,0.7)', borderStyle: 'solid', borderWidth: 0,
+                    ...(t ? { borderTopWidth: '1.5px' } : { borderBottomWidth: '1.5px' }),
+                    ...(l ? { borderLeftWidth: '1.5px' } : { borderRightWidth: '1.5px' }),
+                  }} />
+                )
+              })}
+              <div style={{
+                position: 'absolute', bottom: '22px', left: '22px',
+                fontFamily: "'JetBrains Mono', monospace",
+                fontSize: '7px', letterSpacing: '0.35em', textTransform: 'uppercase',
+                color: 'rgba(204,255,0,0.55)',
+                background: 'rgba(4,6,10,0.7)', padding: '3px 8px',
+                backdropFilter: 'blur(4px)',
+              }}>
+                [TRAINING / EVAP-110_PROTOCOL]
+              </div>
+              <div style={{ position: 'absolute', top: '22px', right: '22px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <div style={{
+                  width: '5px', height: '5px', borderRadius: '50%',
+                  background: '#CCFF00', boxShadow: '0 0 8px #CCFF00',
+                  animation: 'pulse-lime 2s ease-out infinite',
+                }} />
+                <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '6.5px', letterSpacing: '0.3em', color: 'rgba(204,255,0,0.5)' }}>LIVE</span>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Ticker */}
+          <motion.div
+            className="flex items-center gap-8 mt-8 overflow-hidden"
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}
+          >
+            {['10 EXERCISES', '3 PHASES', '8 WEEKS', 'VERIFIED PROTOCOL', '110CM TARGET'].map(t => (
+              <span key={t} className="flex items-center gap-2 text-body text-white/20 text-[9px] tracking-[0.4em] uppercase whitespace-nowrap">
+                <span className="w-1 h-1 rounded-full bg-[#CCFF00]" />
+                {t}
+              </span>
+            ))}
+          </motion.div>
+
+        </div>
       </section>
 
       {/* ── FREE exercises ── */}

@@ -401,7 +401,7 @@ export default function ProtocolPage() {
             {/* RIGHT — protocol video viewfinder */}
             <div style={{ position: 'relative', overflow: 'hidden', aspectRatio: '1 / 1' }}>
               <video
-                src="/footage/protocol.mov"
+                src="/footage/protocol.mp4"
                 autoPlay muted loop playsInline
                 style={{
                   position: 'absolute', inset: 0, width: '100%', height: '100%',

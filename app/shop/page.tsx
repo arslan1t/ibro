@@ -57,7 +57,7 @@ function ProductVideo({ src, gradient, accent, price }: { src: string; gradient:
         muted
         loop
         playsInline
-        preload="metadata"
+        preload="none"
         style={{
           position: 'absolute', inset: 0,
           width: '100%', height: '100%',
@@ -129,7 +129,7 @@ const PRODUCTS: Product[] = [
     desc: 'Obsidian black heavyweight fleece. Cyber Lime 3D chain-stitch embroidery. Oversized silhouette engineered for athletes who play above the rim. 400GSM warmth for pre-game focus.',
     tags: ['400GSM FLEECE', 'OVERSIZED FIT', '3D EMBROIDERY'],
     accent: '#CCFF00',
-    videoSrc: '/footage/hoodie.mov',
+    videoSrc: '/footage/hoodie.mp4',
     bgGradient: 'linear-gradient(135deg, #06080A 0%, #0A0C0E 100%)',
   },
   {
@@ -141,7 +141,7 @@ const PRODUCTS: Product[] = [
     desc: 'Ice Blue performance jersey. Moisture-wicking micro-knit. Brutalist 3D typography printed on 100% recycled performance fibers. Built for the grind, styled for the street.',
     tags: ['MOISTURE-WICK', 'RECYCLED FIBERS', 'ATHLETIC CUT'],
     accent: '#F0F7FF',
-    videoSrc: '/footage/tee.mov',
+    videoSrc: '/footage/tee.mp4',
     bgGradient: 'linear-gradient(135deg, #040C1E 0%, #061220 100%)',
   },
   {
@@ -153,7 +153,7 @@ const PRODUCTS: Product[] = [
     desc: 'Official size 7. Neon lime seam accents. Custom deep-channel grip. Signed series. The exact ball that trained the vertical that redefined the position. Limited to 50 units.',
     tags: ['SIZE 7 OFFICIAL', 'NEON SEAMS', 'SIGNED SERIES'],
     accent: '#CCFF00',
-    videoSrc: '/footage/ball.mov',
+    videoSrc: '/footage/ball.mp4',
     bgGradient: 'linear-gradient(135deg, #06080A 0%, #0A0C0E 100%)',
   },
   {
@@ -165,7 +165,7 @@ const PRODUCTS: Product[] = [
     desc: 'Official-weight game jersey. Cyber Lime number print. Breathable mesh construction engineered for peak court performance. Worn by the anomaly.',
     tags: ['MESH FABRIC', 'GAME WEIGHT', 'LIME PRINT'],
     accent: '#CCFF00',
-    videoSrc: '/footage/jersey.mov',
+    videoSrc: '/footage/jersey.mp4',
     bgGradient: 'linear-gradient(135deg, #04100A 0%, #081808 100%)',
   },
   {
@@ -177,7 +177,7 @@ const PRODUCTS: Product[] = [
     desc: 'Lightweight high-top silhouette. Carbon fiber plate for explosive takeoff. Neon lime outsole accent. Engineered to add centimeters to your vertical.',
     tags: ['CARBON PLATE', 'HIGH-TOP', 'LIME OUTSOLE'],
     accent: '#F0F7FF',
-    videoSrc: '/footage/shoe.mov',
+    videoSrc: '/footage/shoe.mp4',
     bgGradient: 'linear-gradient(135deg, #080A1A 0%, #0C0E22 100%)',
   },
   {
@@ -189,7 +189,7 @@ const PRODUCTS: Product[] = [
     desc: 'Four-way stretch performance shorts. Quick-dry micro-fiber. Minimal design, maximum range of motion. The foundation of every training session.',
     tags: ['4-WAY STRETCH', 'QUICK-DRY', 'MINIMAL'],
     accent: '#CCFF00',
-    videoSrc: '/footage/shorts.mov',
+    videoSrc: '/footage/shorts.mp4',
     bgGradient: 'linear-gradient(135deg, #0A0808 0%, #120C0C 100%)',
   },
 ]
@@ -471,7 +471,7 @@ export default function ShopPage() {
             {/* RIGHT — model video */}
             <div style={{ position: 'relative', overflow: 'hidden', aspectRatio: '1 / 1' }}>
               <video
-                src="/footage/model.mov"
+                src="/footage/model.mp4"
                 autoPlay muted loop playsInline
                 style={{
                   position: 'absolute', inset: 0, width: '100%', height: '100%',

@@ -692,7 +692,7 @@ function HoverVideo({
       <video
         ref={vidRef}
         src={src}
-        muted loop playsInline preload="metadata"
+        muted loop playsInline preload="none"
         style={{
           position: 'absolute', inset: 0,
           width: '100%', height: '100%', objectFit: 'cover',
@@ -1192,6 +1192,7 @@ function VaultCard({ index, category, title, duration, gradient, src, social, me
           muted
           loop
           playsInline
+          preload="none"
           className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500"
           style={{ opacity: hovered ? 0.88 : 0 }}
           ref={(el) => { if (el) hovered ? el.play().catch(() => {}) : el.pause() }}

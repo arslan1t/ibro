@@ -178,9 +178,17 @@ const DEFAULT_RIGHT: StatDef[] = [
 export default function BiometricSection() {
   const ref     = useRef<HTMLDivElement>(null)
   const visible = useInView(ref, { once: true, margin: '-80px' })
+  const [isMobile, setIsMobile] = useState(false)
 
   const [statsLeft,  setStatsLeft]  = useState<StatDef[]>(DEFAULT_LEFT)
   const [statsRight, setStatsRight] = useState<StatDef[]>(DEFAULT_RIGHT)
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768)
+    check()
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
+  }, [])
 
   /* Fetch live stats from admin-editable content.json */
   useEffect(() => {
@@ -202,8 +210,48 @@ export default function BiometricSection() {
           { value: s.sprint   ?? 3.1, dec: 1, unit: 'SEC', label: '0-30M_SPRINT',              delay: 3 },
         ])
       })
-      .catch(() => {/* keep defaults on error */})
+      .catch(() => {})
   }, [])
+
+  /* ── MOBILE layout ── */
+  if (isMobile) {
+    return (
+      <section id="stats" ref={ref} style={{ position: 'relative', background: '#050505', overflow: 'hidden', minHeight: '100dvh', display: 'flex', flexDirection: 'column' }}>
+        {/* Grid bg */}
+        <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', backgroundImage: `linear-gradient(rgba(204,255,0,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(204,255,0,0.04) 1px, transparent 1px)`, backgroundSize: '30px 30px' }} />
+
+        {/* Section label */}
+        <motion.div initial={{ opacity: 0 }} animate={visible ? { opacity: 1 } : {}} transition={{ duration: 0.6 }}
+          style={{ padding: '20px 20px 0', display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'relative', zIndex: 5 }}>
+          <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '7px', letterSpacing: '0.45em', color: 'rgba(204,255,0,0.45)' }}>
+            SECTION_02 / STATISTICS
+          </span>
+          <LiveCoords />
+        </motion.div>
+
+        {/* Image — top half, full width with screen blend */}
+        <div style={{ position: 'relative', height: '45vw', maxHeight: '220px', flex: '0 0 auto', mixBlendMode: 'screen' }}>
+          <Image src="/images/ibro.png" alt="Ibrohim Avazov" fill className="object-contain" style={{ objectPosition: 'center bottom' }} sizes="100vw" priority />
+        </div>
+
+        {/* Stats — 2×4 full width */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', flex: 1, position: 'relative', zIndex: 5 }}>
+          {Array.from({ length: 4 }, (_, i) => [
+            <StatCell key={statsLeft[i]?.label  ?? i}        stat={statsLeft[i]  ?? DEFAULT_LEFT[i]}  visible={visible} index={i}     />,
+            <StatCell key={statsRight[i]?.label ?? i + '_r'} stat={statsRight[i] ?? DEFAULT_RIGHT[i]} visible={visible} index={i + 4} />,
+          ]).flat()}
+        </div>
+
+        {/* Bottom bar */}
+        <motion.div initial={{ opacity: 0 }} animate={visible ? { opacity: 1 } : {}} transition={{ delay: 2, duration: 0.4 }}
+          style={{ padding: '10px 20px', borderTop: '1px solid rgba(204,255,0,0.06)', display: 'flex', flexWrap: 'wrap', gap: '6px', position: 'relative', zIndex: 6 }}>
+          {['AVAZOV_IBROHIM', 'PG / #1', 'TASHKENT_UZB'].map(t => (
+            <span key={t} style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '6px', letterSpacing: '0.3em', color: 'rgba(204,255,0,0.22)' }}>{t}</span>
+          ))}
+        </motion.div>
+      </section>
+    )
+  }
 
   return (
     <section

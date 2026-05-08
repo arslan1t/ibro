@@ -203,77 +203,122 @@ function Preloader({ onDone }: { onDone: () => void }) {
 
 /* ─── Navigation ────────────────────────────────────────────────── */
 function Nav() {
-  const [scrolled, setScrolled] = useState(false)
+  const [scrolled, setScrolled]   = useState(false)
+  const [menuOpen, setMenuOpen]   = useState(false)
+
   useEffect(() => {
-    const fn = () => setScrolled(window.scrollY > 60)
-    window.addEventListener('scroll', fn, { passive: true })
-    return () => window.removeEventListener('scroll', fn)
+    const onScroll = () => setScrolled(window.scrollY > 40)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  const NAV_LINKS = [
+    { label: 'STATS',  href: '#stats' },
+    { label: 'FILM',   href: '#film' },
+    { label: 'STORY',  href: '#story' },
+    { label: 'IBRO',   href: '/protocol' },
+    { label: 'SHOP',   href: '/shop' },
+  ]
+
   return (
-    <motion.nav
-      className="fixed top-0 left-0 right-0 z-50 px-8 py-5 flex items-center justify-between"
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.2, duration: 0.6 }}
-      style={{
-        background: scrolled ? 'rgba(8,10,12,0.85)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(20px)' : 'none',
-        borderBottom: scrolled ? '1px solid rgba(255,255,255,0.05)' : 'none',
-        transition: 'background 0.4s ease, backdrop-filter 0.4s ease',
-      }}
-    >
-      <a href="/ibrohim" className="flex items-center gap-2 group">
-        <Image
-          src="/images/logo-new.png"
-          alt="Ibrohim"
-          width={120}
-          height={48}
-          className="object-contain"
-          style={{
-            filter: 'drop-shadow(0 0 10px rgba(204,255,0,0.4))',
-            maxHeight: '44px',
-            width: 'auto',
-            transition: 'filter 0.3s',
-          }}
-        />
-      </a>
-      {/* Menu shifted 40px left for breathing room before RECRUIT */}
-      <div
-        className="hidden md:flex items-center gap-8"
-        style={{ transform: 'translateX(-40px)' }}
-      >
-        {[
-          { label: 'STATS',    href: '#stats' },
-          { label: 'FILM',     href: '#film' },
-          { label: 'STORY',    href: '#story' },
-          { label: 'IBRO', href: '/protocol' },
-          { label: 'SHOP',     href: '/shop' },
-        ].map((item) => (
-          <a
-            key={item.label}
-            href={item.href}
-            className="nav-link text-body text-white/50 text-[11.5px] tracking-[0.3em] uppercase"
-          >
-            {item.label}
-          </a>
-        ))}
-      </div>
-      <motion.a
-        href="#contact"
-        className="recruit-btn relative text-body uppercase flex items-center gap-2 px-5 py-2.5 border border-[#CCFF00]/60 text-[#CCFF00] rounded-sm"
-        style={{ letterSpacing: '2px', fontSize: '11px' }}
-        whileHover={{
-          backgroundColor: '#CCFF00',
-          color: '#080A0C',
-          boxShadow: '0 0 18px rgba(204,255,0,0.45), 0 0 36px rgba(204,255,0,0.15)',
+    <>
+      <motion.nav
+        className="fixed top-0 left-0 right-0 z-50 px-5 py-3 flex items-center justify-between"
+        initial={{ opacity: 0, y: -16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3, duration: 0.6 }}
+        style={{
+          background: (scrolled || menuOpen) ? 'rgba(8,10,12,0.95)' : 'transparent',
+          backdropFilter: (scrolled || menuOpen) ? 'blur(20px)' : 'none',
+          borderBottom: scrolled ? '1px solid rgba(255,255,255,0.05)' : 'none',
+          transition: 'background 0.4s ease, backdrop-filter 0.4s ease',
         }}
-        transition={{ duration: 0.2 }}
       >
-        <span className="w-1.5 h-1.5 rounded-full bg-[#CCFF00] flex-shrink-0" />
-        RECRUIT
-      </motion.a>
-    </motion.nav>
+        {/* Logo */}
+        <a href="/ibrohim" className="flex items-center gap-2 group">
+          <Image src="/images/logo-new.png" alt="Ibrohim" width={120} height={48} className="object-contain"
+            style={{ filter: 'drop-shadow(0 0 10px rgba(204,255,0,0.4))', maxHeight: '40px', width: 'auto' }} />
+        </a>
+
+        {/* Desktop links */}
+        <div className="hidden md:flex items-center gap-8" style={{ transform: 'translateX(-40px)' }}>
+          {NAV_LINKS.map(item => (
+            <a key={item.label} href={item.href}
+              className="nav-link text-body text-white/50 text-[11.5px] tracking-[0.3em] uppercase">
+              {item.label}
+            </a>
+          ))}
+        </div>
+
+        {/* Desktop CTA */}
+        <motion.a href="#contact"
+          className="hidden md:flex recruit-btn relative text-body uppercase items-center gap-2 px-5 py-2.5 border border-[#CCFF00]/60 text-[#CCFF00] rounded-sm"
+          style={{ letterSpacing: '2px', fontSize: '11px' }}
+          whileHover={{ backgroundColor: '#CCFF00', color: '#080A0C', boxShadow: '0 0 18px rgba(204,255,0,0.45)' }}
+          transition={{ duration: 0.2 }}>
+          <span className="w-1.5 h-1.5 rounded-full bg-[#CCFF00] flex-shrink-0" />
+          RECRUIT
+        </motion.a>
+
+        {/* Mobile: RECRUIT + burger */}
+        <div className="flex md:hidden items-center gap-3">
+          <a href="#contact"
+            style={{ fontFamily: "'Bebas Neue', cursive", fontSize: '13px', letterSpacing: '0.2em', color: '#CCFF00', border: '1px solid rgba(204,255,0,0.4)', padding: '6px 14px', textDecoration: 'none' }}>
+            RECRUIT
+          </a>
+          <button onClick={() => setMenuOpen(o => !o)}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '4px', display: 'flex', flexDirection: 'column', gap: '5px' }}>
+            {[0,1,2].map(i => (
+              <span key={i} style={{
+                display: 'block', width: '22px', height: '1.5px',
+                background: '#CCFF00',
+                transition: 'transform 0.25s, opacity 0.25s',
+                transform: menuOpen ? (i === 0 ? 'rotate(45deg) translate(4.5px,4.5px)' : i === 2 ? 'rotate(-45deg) translate(4.5px,-4.5px)' : 'scaleX(0)') : 'none',
+                opacity: (menuOpen && i === 1) ? 0 : 1,
+              }} />
+            ))}
+          </button>
+        </div>
+      </motion.nav>
+
+      {/* Mobile dropdown menu */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            key="mobile-menu"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.25 }}
+            style={{
+              position: 'fixed', top: '56px', left: 0, right: 0, zIndex: 49,
+              background: 'rgba(5,5,5,0.98)', backdropFilter: 'blur(20px)',
+              borderBottom: '1px solid rgba(204,255,0,0.1)',
+              padding: '16px 0 20px',
+            }}>
+            {NAV_LINKS.map((item, i) => (
+              <motion.a
+                key={item.label}
+                href={item.href}
+                onClick={() => setMenuOpen(false)}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: i * 0.05 }}
+                style={{
+                  display: 'block', padding: '14px 24px',
+                  fontFamily: "'Bebas Neue', cursive",
+                  fontSize: '22px', letterSpacing: '0.15em',
+                  color: 'rgba(255,255,255,0.7)',
+                  textDecoration: 'none',
+                  borderBottom: '1px solid rgba(255,255,255,0.04)',
+                }}>
+                {item.label}
+              </motion.a>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   )
 }
 
@@ -336,7 +381,7 @@ function HeroSection() {
 
           {/* Subtitle */}
           <motion.div
-            className="flex items-center gap-4"
+            className="flex items-center gap-3 flex-wrap justify-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7, duration: 0.8 }}
@@ -347,8 +392,8 @@ function HeroSection() {
               { label: '75KG', desc: 'OPTIMIZED' },
               { label: 'UZB', desc: 'ORIGIN' },
             ].map((stat, i) => (
-              <div key={stat.label} className="flex items-center gap-4">
-                {i > 0 && <span className="w-px h-6 bg-white/15" />}
+              <div key={stat.label} className="flex items-center gap-3">
+                {i > 0 && <span className="hidden sm:block w-px h-6 bg-white/15" />}
                 <div className="text-center">
                   <div className="text-display text-white text-base tracking-[0.15em]">{stat.label}</div>
                   <div className="text-body text-white/35 text-[10px] tracking-[0.3em]">{stat.desc}</div>
@@ -741,11 +786,8 @@ function ParadoxSection() {
         SECTION_03 / THE_110CM_PARADOX
       </div>
 
-      {/* Two vertical video columns */}
-      <div style={{
-        position: 'absolute', inset: 0,
-        display: 'grid', gridTemplateColumns: '1fr 1fr',
-      }}>
+      {/* Two video columns — stacked on mobile */}
+      <div className="absolute inset-0 grid grid-cols-1 md:grid-cols-2 grid-rows-2 md:grid-rows-1">
         <HoverVideo
           src="/footage/jump-main.mp4"
           label="JUMP / 110CM_VERIFIED"
@@ -1052,7 +1094,7 @@ function PioneerSection({ apiPanels }: { apiPanels?: ApiPioneerSlide[] }) {
           <motion.button
             onClick={prev}
             disabled={current === 0}
-            className="w-11 h-11 rounded-sm flex items-center justify-center border text-base font-bold transition-colors duration-200"
+            className="w-12 h-12 md:w-11 md:h-11 rounded-sm flex items-center justify-center border text-base font-bold transition-colors duration-200"
             style={{
               borderColor: current === 0 ? 'rgba(255,255,255,0.08)' : 'rgba(204,255,0,0.5)',
               color:       current === 0 ? 'rgba(255,255,255,0.2)' : '#CCFF00',
@@ -1064,7 +1106,7 @@ function PioneerSection({ apiPanels }: { apiPanels?: ApiPioneerSlide[] }) {
           <motion.button
             onClick={next}
             disabled={current === TOTAL - 1}
-            className="w-11 h-11 rounded-sm flex items-center justify-center border text-base font-bold transition-colors duration-200"
+            className="w-12 h-12 md:w-11 md:h-11 rounded-sm flex items-center justify-center border text-base font-bold transition-colors duration-200"
             style={{
               borderColor: current === TOTAL - 1 ? 'rgba(255,255,255,0.08)' : 'rgba(204,255,0,0.5)',
               color:       current === TOTAL - 1 ? 'rgba(255,255,255,0.2)' : '#CCFF00',

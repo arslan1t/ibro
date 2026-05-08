@@ -391,10 +391,10 @@ export default function ShopPage() {
           <motion.div
             style={{
               display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
+              gridTemplateColumns: 'clamp(280px, 50%, 600px) 1fr',
               gap: '0',
               border: '1px solid rgba(204,255,0,0.08)',
-              minHeight: '480px',
+              minHeight: 'clamp(280px, 55vw, 480px)',
             }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}

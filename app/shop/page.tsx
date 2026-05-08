@@ -260,7 +260,7 @@ function ProductCard({ product, index, onBuy }: { product: Product; index: numbe
           <p className="text-body text-white/30 text-[9px] tracking-[0.5em] uppercase mb-1">{product.subtitle}</p>
           <h3
             className="leading-none"
-            style={{ fontFamily: "'Bebas Neue', cursive", fontSize: '28px', color: product.accent }}
+            style={{ fontFamily: "'Bebas Neue', cursive", fontSize: 'clamp(22px, 5vw, 28px)', color: product.accent }}
           >
             {product.name}
           </h3>
@@ -285,7 +285,7 @@ function ProductCard({ product, index, onBuy }: { product: Product; index: numbe
         {/* Price + CTA */}
         <div className="flex items-center justify-between pt-2 border-t border-white/5">
           <span
-            style={{ fontFamily: "'Bebas Neue', cursive", fontSize: '32px', color: product.accent,
+            style={{ fontFamily: "'Bebas Neue', cursive", fontSize: 'clamp(26px, 5vw, 32px)', color: product.accent,
               textShadow: `0 0 20px ${product.accent}40` }}
           >
             {product.price}
@@ -389,12 +389,11 @@ export default function ShopPage() {
 
           {/* ── Two-column: LEFT text | RIGHT model video ── */}
           <motion.div
+            className="flex flex-col md:grid"
             style={{
-              display: 'grid',
-              gridTemplateColumns: 'clamp(280px, 50%, 600px) 1fr',
+              gridTemplateColumns: '1fr 1fr',
               gap: '0',
               border: '1px solid rgba(204,255,0,0.08)',
-              minHeight: 'clamp(280px, 55vw, 480px)',
             }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -403,24 +402,24 @@ export default function ShopPage() {
             {/* LEFT — text hierarchy */}
             <div style={{
               display: 'flex', flexDirection: 'column', justifyContent: 'center',
-              padding: '48px 6% 48px 5%',
-              borderRight: '1px solid rgba(204,255,0,0.08)',
-            }}>
-              {/* Section subheader */}
+              padding: 'clamp(24px, 5vw, 48px) clamp(16px, 6%, 40px)',
+              borderBottom: '1px solid rgba(204,255,0,0.08)',
+            }}
+              className="md:border-b-0 md:border-r md:border-[rgba(204,255,0,0.08)]"
+            >
               <div style={{
                 fontFamily: "'JetBrains Mono', monospace",
                 fontSize: '7.5px', letterSpacing: '0.45em', textTransform: 'uppercase',
-                color: '#CCFF00', marginBottom: '20px',
+                color: '#CCFF00', marginBottom: '16px',
               }}>
                 SECTION_06 // THE DROP VERTICAL COLLECTION
               </div>
 
-              {/* Main title */}
               <h1 style={{
                 fontFamily: "'Bebas Neue', cursive",
-                fontSize: 'clamp(48px, 7vw, 88px)',
+                fontSize: 'clamp(42px, 9vw, 88px)',
                 lineHeight: 0.88, letterSpacing: '0.03em',
-                color: '#F0F7FF', marginBottom: '20px',
+                color: '#F0F7FF', marginBottom: '16px',
               }}>
                 THE DROP<br />
                 <span style={{ color: '#CCFF00', textShadow: '0 0 28px rgba(204,255,0,0.35)' }}>
@@ -429,53 +428,47 @@ export default function ShopPage() {
                 COLLECTION
               </h1>
 
-              {/* Lime accent rule */}
               <div style={{
                 width: '40px', height: '1px',
                 background: '#CCFF00', boxShadow: '0 0 8px #CCFF00',
-                marginBottom: '22px',
+                marginBottom: '16px',
               }} />
 
-              {/* Description */}
               <p style={{
                 fontFamily: "'Space Grotesk', sans-serif",
-                fontSize: '14px', lineHeight: 1.65,
+                fontSize: 'clamp(13px, 2vw, 15px)', lineHeight: 1.65,
                 color: 'rgba(255,255,255,0.50)',
-                maxWidth: '360px', marginBottom: '16px',
+                marginBottom: '12px',
               }}>
                 Limited run. No restocks. Engineered for the athlete
                 who trained the 110cm jump. Wear the anomaly.
               </p>
 
-              {/* Meta details */}
               <div style={{
                 fontFamily: "'JetBrains Mono', monospace",
                 fontSize: '7px', letterSpacing: '0.38em', textTransform: 'uppercase',
-                color: 'rgba(204,255,0,0.35)', marginBottom: '28px',
+                color: 'rgba(204,255,0,0.35)', marginBottom: '20px',
               }}>
                 2024 / TASHKENT ORIGIN / GLOBAL DROP
               </div>
 
-              {/* CTA — borderless, Cyber Lime */}
               <a href="#products" style={{
                 fontFamily: "'JetBrains Mono', monospace",
                 fontSize: '9px', letterSpacing: '0.5em', textTransform: 'uppercase',
-                color: '#CCFF00', background: 'transparent', border: 'none',
-                textDecoration: 'none',
+                color: '#CCFF00', textDecoration: 'none',
                 display: 'inline-flex', alignItems: 'center', gap: '8px',
-                cursor: 'pointer',
                 transition: 'opacity 0.2s',
               }}
               onMouseEnter={e => (e.currentTarget.style.opacity = '0.65')}
               onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
               >
-                SHOP
+                SHOP THE DROP
                 <span style={{ display: 'inline-block', width: '20px', height: '1px', background: '#CCFF00', verticalAlign: 'middle' }} />
               </a>
             </div>
 
-            {/* RIGHT — model video in Digital Viewfinder frame */}
-            <div style={{ position: 'relative', overflow: 'hidden', minHeight: '480px' }}>
+            {/* RIGHT — model video */}
+            <div style={{ position: 'relative', overflow: 'hidden', minHeight: 'clamp(240px, 50vw, 480px)' }}>
               <video
                 src="/footage/model.mov"
                 autoPlay muted loop playsInline

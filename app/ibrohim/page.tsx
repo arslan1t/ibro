@@ -1021,7 +1021,7 @@ function PioneerSection({ apiPanels }: { apiPanels?: ApiPioneerSlide[] }) {
           </motion.div>
 
           {/* ── FOREGROUND: text content, left-aligned ── */}
-          <div className="relative z-10 h-full flex flex-col justify-center px-12 md:px-20 pt-16">
+          <div className="relative z-10 h-full flex flex-col justify-center px-5 md:px-20 pt-16">
 
             {/* Slide label */}
             <motion.p
@@ -1042,7 +1042,7 @@ function PioneerSection({ apiPanels }: { apiPanels?: ApiPioneerSlide[] }) {
             <motion.h3
               className="text-display leading-[0.9] whitespace-pre-line"
               style={{
-                fontSize: 'clamp(48px, 7.5vw, 108px)',
+                fontSize: 'clamp(36px, 9vw, 108px)',
                 color: panel.accent,
                 WebkitTextStroke: panel.accent === '#CCFF00'
                   ? '0.5px rgba(204,255,0,0.6)'
@@ -1063,7 +1063,7 @@ function PioneerSection({ apiPanels }: { apiPanels?: ApiPioneerSlide[] }) {
             <motion.p
               style={{
                 fontFamily: "'Space Grotesk', sans-serif",
-                fontSize: 'clamp(14px, 1.3vw, 18px)',
+                fontSize: 'clamp(13px, 3.5vw, 18px)',
                 lineHeight: 1.65,
                 color: 'rgba(255,255,255,0.55)',
                 maxWidth: '420px',

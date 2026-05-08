@@ -197,23 +197,23 @@ function ExerciseCard({ exercise }: { exercise: ExerciseProps }) {
       {/* Name */}
       <h3
         className="text-display text-white mb-6 leading-none"
-        style={{ fontSize: 'clamp(22px, 3vw, 32px)' }}
+        style={{ fontSize: 'clamp(20px, 5vw, 32px)' }}
       >
         {exercise.name}
       </h3>
 
       {/* Stats row */}
-      <div className="grid grid-cols-3 gap-4 mb-6">
+      <div className="grid grid-cols-3 gap-2 md:gap-4 mb-6">
         {[
           { label: 'SETS', value: exercise.sets },
           { label: 'REPS', value: exercise.reps },
           { label: 'REST', value: exercise.rest },
         ].map((s) => (
-          <div key={s.label} className="text-center p-3 rounded-lg"
+          <div key={s.label} className="text-center p-2 md:p-3 rounded-lg"
             style={{ background: 'rgba(204,255,0,0.04)', border: '1px solid rgba(204,255,0,0.1)' }}
           >
-            <div className="text-display text-[#CCFF00] text-xl">{s.value}</div>
-            <div className="text-body text-white/30 text-[9px] tracking-[0.4em] uppercase mt-1">{s.label}</div>
+            <div className="text-display text-[#CCFF00] text-base md:text-xl leading-tight">{s.value}</div>
+            <div className="text-body text-white/30 text-[8px] md:text-[9px] tracking-[0.3em] uppercase mt-1">{s.label}</div>
           </div>
         ))}
       </div>
@@ -440,7 +440,7 @@ export default function ProtocolPage() {
             {/* ── LOCK CARD ── */}
             <div className="absolute inset-0 flex items-center justify-center px-6" style={{ zIndex: 10 }}>
               <motion.div
-                className="glass-card-lime p-8 md:p-12 max-w-lg w-full text-center"
+                className="glass-card-lime p-5 md:p-12 max-w-lg w-full text-center"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
@@ -477,7 +477,7 @@ export default function ProtocolPage() {
                   className="w-full py-4 bg-[#CCFF00] text-[#080A0C] text-sm tracking-[0.3em] uppercase rounded-sm font-bold hover:shadow-[0_0_40px_rgba(204,255,0,0.5)] transition-shadow duration-300"
                   style={{ fontFamily: "'Bebas Neue', cursive", fontSize: '16px', letterSpacing: '0.25em' } as React.CSSProperties}
                 >
-                  PURCHASE ACCESS — UNLOCK THE FULL 110CM PROGRAM
+                  UNLOCK THE FULL 110CM PROGRAM
                 </MagneticBtn>
 
                 <p className="text-body text-white/20 text-[9px] tracking-widest mt-4 uppercase">

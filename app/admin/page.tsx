@@ -15,7 +15,7 @@ interface SiteContent {
   meta: { lastUpdated: string; version: string }
 }
 
-type Section = 'overview' | 'hero' | 'stats' | 'pioneer' | 'scouting' | 'vault' | 'shop' | 'contact' | 'images' | 'orders'
+type Section = 'overview' | 'hero' | 'stats' | 'pioneer' | 'scouting' | 'vault' | 'shop' | 'contact' | 'images' | 'videos' | 'orders'
 
 interface Order {
   id: string; productId: string; productName: string; amount: number
@@ -32,6 +32,20 @@ const IMAGE_SLOTS = [
   { slot: 'leg',      label: 'PIONEER SLIDE 3',    desc: 'Section 04 — The Protocol',                            preview: '/images/leg.png' },
   { slot: 'univers',  label: 'PIONEER SLIDE 5',    desc: 'Section 04 — Global Vision / World',                   preview: '/images/univers.png' },
   { slot: 'logo-new', label: 'LOGO',               desc: 'Логотип навигации',                                    preview: '/images/logo-new.png' },
+]
+
+/* ─── Video slot definitions ─────────────────────────────────────── */
+const VIDEO_SLOTS = [
+  { slot: 'model',           label: 'HERO MODEL',          desc: 'Shop — главное видео (левая колонка)', ext: 'mov' },
+  { slot: 'hoodie',          label: 'HOODIE',              desc: 'Shop — THE CEILING hoodie',           ext: 'mov' },
+  { slot: 'tee',             label: 'TEE',                 desc: 'Shop — VERTICAL PIONEER tee',         ext: 'mov' },
+  { slot: 'ball',            label: 'BASKETBALL',          desc: 'Shop — 110CM SIGNATURE ball',         ext: 'mov' },
+  { slot: 'jersey',          label: 'JERSEY',              desc: 'Shop — PIONEER JERSEY',               ext: 'mov' },
+  { slot: 'shoe',            label: 'SHOES',               desc: 'Shop — VERTICAL BOOST shoes',         ext: 'mov' },
+  { slot: 'shorts',          label: 'SHORTS',              desc: 'Shop — APEX SHORTS',                  ext: 'mov' },
+  { slot: 'jump-main',       label: 'JUMP VIDEO',          desc: 'Section 03 — левое видео (прыжок)',   ext: 'mp4' },
+  { slot: 'recruitment-reel',label: 'RECRUITMENT REEL',    desc: 'Section 03 — правое видео (игра)',    ext: 'mp4' },
+  { slot: 'training-raw',    label: 'TRAINING VIDEO',      desc: 'Section 03 — тренировки',             ext: 'mp4' },
 ]
 
 /* ─── Helpers ────────────────────────────────────────────────────── */
@@ -156,6 +170,10 @@ export default function AdminPage() {
   const [imgDone,      setImgDone]      = useState<Record<string, boolean>>({})
   const [imgPreviews,  setImgPreviews]  = useState<Record<string, string>>({})
 
+  const [vidUploading, setVidUploading] = useState<Record<string, boolean>>({})
+  const [vidDone,      setVidDone]      = useState<Record<string, boolean>>({})
+  const [vidNames,     setVidNames]     = useState<Record<string, string>>({})
+
   const uploadImage = async (slot: string, file: File) => {
     setImgUploading(p => ({ ...p, [slot]: true }))
     const fd = new FormData()
@@ -165,13 +183,31 @@ export default function AdminPage() {
       const res = await fetch('/api/upload', { method: 'POST', body: fd })
       const data = await res.json()
       if (data.success) {
-        /* Bust cache: add timestamp param so browser reloads the image */
         setImgPreviews(p => ({ ...p, [slot]: `${data.path}?t=${Date.now()}` }))
         setImgDone(p => ({ ...p, [slot]: true }))
         setTimeout(() => setImgDone(p => ({ ...p, [slot]: false })), 2500)
       }
     } finally {
       setImgUploading(p => ({ ...p, [slot]: false }))
+    }
+  }
+
+  const uploadVideo = async (slot: string, file: File) => {
+    setVidUploading(p => ({ ...p, [slot]: true }))
+    const fd = new FormData()
+    fd.append('file', file)
+    fd.append('slot', slot)
+    fd.append('type', 'video')
+    try {
+      const res = await fetch('/api/upload', { method: 'POST', body: fd })
+      const data = await res.json()
+      if (data.success) {
+        setVidNames(p => ({ ...p, [slot]: file.name }))
+        setVidDone(p => ({ ...p, [slot]: true }))
+        setTimeout(() => setVidDone(p => ({ ...p, [slot]: false })), 3000)
+      }
+    } finally {
+      setVidUploading(p => ({ ...p, [slot]: false }))
     }
   }
 
@@ -185,6 +221,7 @@ export default function AdminPage() {
     { id: 'shop',     label: 'SHOP',      icon: '🛒' },
     { id: 'contact',  label: 'CONTACT',   icon: '✉' },
     { id: 'images',   label: 'IMAGES',    icon: '🖼' },
+    { id: 'videos',   label: 'VIDEOS',    icon: '🎬' },
     { id: 'orders',   label: `ORDERS${orders.length ? ` (${orders.length})` : ''}`,   icon: '💳' },
   ]
 
@@ -600,6 +637,120 @@ export default function AdminPage() {
                 ◈ PNG рекомендуется для фото с прозрачным фоном (ibro.png, jump.png)<br/>
                 ◈ Файл перезаписывается сразу — обнови страницу сайта чтобы увидеть изменения<br/>
                 ◈ Оптимальные размеры: минимум 800×800px, формат 1:1 или 4:3
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* ══ VIDEOS ══ */}
+        {section === 'videos' && (
+          <div>
+            <div style={{ ...mono, fontSize: '8px', color: 'rgba(204,255,0,0.4)', letterSpacing: '0.5em', marginBottom: '12px' }}>MEDIA</div>
+            <h1 style={{ ...bebas, fontSize: '42px', color: '#F0F7FF', letterSpacing: '0.05em', marginBottom: '8px' }}>VIDEO MANAGER</h1>
+            <p style={{ ...mono, fontSize: '8px', color: 'rgba(255,255,255,0.25)', letterSpacing: '0.2em', marginBottom: '32px' }}>
+              MP4 / MOV — ЗАМЕНЯЕТ ТЕКУЩЕЕ ВИДЕО СРАЗУ
+            </p>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '20px' }}>
+              {VIDEO_SLOTS.map(({ slot, label, desc, ext }) => {
+                const uploading = vidUploading[slot]
+                const done      = vidDone[slot]
+                const uploaded  = vidNames[slot]
+
+                return (
+                  <div key={slot} style={{
+                    border: done
+                      ? '1px solid rgba(204,255,0,0.55)'
+                      : '1px solid rgba(255,255,255,0.07)',
+                    background: 'rgba(255,255,255,0.02)',
+                    padding: '20px',
+                    transition: 'border-color 0.3s',
+                  }}>
+                    {/* Video preview placeholder */}
+                    <div style={{
+                      width: '100%', paddingTop: '56.25%',
+                      background: '#0A0A0A', marginBottom: '14px',
+                      position: 'relative', overflow: 'hidden',
+                    }}>
+                      <div style={{
+                        position: 'absolute', inset: 0,
+                        display: 'flex', flexDirection: 'column',
+                        alignItems: 'center', justifyContent: 'center', gap: '8px',
+                      }}>
+                        <span style={{ fontSize: '28px', opacity: 0.3 }}>🎬</span>
+                        <span style={{ ...mono, fontSize: '7px', color: 'rgba(255,255,255,0.2)', letterSpacing: '0.3em' }}>
+                          {uploaded ? uploaded : `${slot}.${ext}`}
+                        </span>
+                        {done && (
+                          <div style={{
+                            position: 'absolute', top: '8px', right: '8px',
+                            background: lime, color: '#050505',
+                            padding: '3px 8px', ...mono, fontSize: '7px', letterSpacing: '0.2em',
+                          }}>
+                            ✓ UPDATED
+                          </div>
+                        )}
+                        {uploading && (
+                          <div style={{
+                            position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.6)',
+                            display: 'flex', alignItems: 'center', justifyContent: 'center',
+                          }}>
+                            <span style={{ ...mono, fontSize: '8px', color: lime, letterSpacing: '0.4em' }}>
+                              UPLOADING...
+                            </span>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Info */}
+                    <div style={{ ...bebas, fontSize: '16px', color: '#F0F7FF', letterSpacing: '0.05em', marginBottom: '4px' }}>
+                      {label}
+                    </div>
+                    <div style={{ ...mono, fontSize: '7px', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.15em', marginBottom: '14px', lineHeight: 1.5 }}>
+                      {desc}
+                    </div>
+
+                    {/* Upload */}
+                    <label style={{
+                      display: 'block', width: '100%', padding: '10px',
+                      background: uploading ? 'rgba(204,255,0,0.12)' : 'rgba(204,255,0,0.06)',
+                      border: `1px solid ${uploading ? 'rgba(204,255,0,0.6)' : 'rgba(204,255,0,0.25)'}`,
+                      color: lime, cursor: uploading ? 'not-allowed' : 'pointer',
+                      ...mono, fontSize: '8px', letterSpacing: '0.3em',
+                      textAlign: 'center', transition: 'all 0.2s', boxSizing: 'border-box',
+                    }}
+                      onMouseEnter={e => !uploading && (e.currentTarget.style.background = 'rgba(204,255,0,0.12)')}
+                      onMouseLeave={e => !uploading && (e.currentTarget.style.background = 'rgba(204,255,0,0.06)')}
+                    >
+                      {uploading ? 'UPLOADING...' : '↑ REPLACE VIDEO'}
+                      <input
+                        type="file"
+                        accept="video/mp4,video/quicktime,video/webm,.mp4,.mov,.webm"
+                        disabled={uploading}
+                        style={{ display: 'none' }}
+                        onChange={e => {
+                          const file = e.target.files?.[0]
+                          if (file) uploadVideo(slot, file)
+                          e.target.value = ''
+                        }}
+                      />
+                    </label>
+                  </div>
+                )
+              })}
+            </div>
+
+            <div style={{
+              marginTop: '28px', padding: '16px 20px',
+              border: '1px solid rgba(255,255,255,0.06)',
+              background: 'rgba(255,255,255,0.01)',
+            }}>
+              <div style={{ ...mono, fontSize: '7px', color: 'rgba(255,255,255,0.2)', letterSpacing: '0.25em', lineHeight: 1.8 }}>
+                ◈ MOV — для видео магазина (shop products)<br/>
+                ◈ MP4 — для контент-видео (Section 03, recruitment reel)<br/>
+                ◈ Рекомендуемый размер: до 50MB, разрешение 1080p<br/>
+                ◈ Файл перезаписывается сразу — обнови страницу сайта чтобы увидеть изменения
               </div>
             </div>
           </div>
